@@ -1,4 +1,4 @@
-(defproject clj-genomespace "0.1.3-SNAPSHOT"
+(defproject clj-genomespace "0.1.3"
   :description "Access GenomeSpace data integration platform with simple Clojure API"
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.clojars.chapmanb/genomespace-cdk "0.1-SNAPSHOT"]
