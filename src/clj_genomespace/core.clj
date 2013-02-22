@@ -56,17 +56,19 @@
     (map #(str base "/" (.getName %))
          (.findDirectories (.list dm base)))))
 
+(defn- meta-to-record
+  [gs-file-meta]
+  (let [fname (.getPath gs-file-meta)]
+    {:name (str (.getName (file fname)))
+     :dirname (str (.getParentFile (file fname)))
+     :ftype (when-let [x (.getDataFormat gs-file-meta)] (.getName x))
+     :date (.getLastModified gs-file-meta)
+     :size (.getSize gs-file-meta)}))
+
 (defn- gs-list-files
   "Retrieve files of a specific filetype in a directory."
   [dm gsuser dirname ftype]
-  (letfn [(meta-to-record [gs-file-meta]
-            (let [fname (.getPath gs-file-meta)]
-              {:name (str (.getName (file fname)))
-               :dirname (str (.getParentFile (file fname)))
-               :ftype (when-let [x (.getDataFormat gs-file-meta)] (.getName x))
-               :date (.getLastModified gs-file-meta)
-               :size (.getSize gs-file-meta)}))
-          (matches-ftype? [x]
+  (letfn [(matches-ftype? [x]
             (or (= (:ftype x) ftype)
                 (.endsWith (:name x) ftype)))]
     (let [base (gs-user-path dm gsuser dirname)]
@@ -79,8 +81,8 @@
 (defrecord GsClient [session gsuser dm]
   GsAccess
   (upload [_ dirname local-file]
-    (.uploadFile dm (file local-file)
-                 (gs-mkdir dm gsuser dirname)))
+    (meta-to-record (.uploadFile dm (file local-file)
+                                 (gs-mkdir dm gsuser dirname))))
   (download [_ dirname fname out-name]
     (.downloadFile dm (gs-remote-file dm gsuser dirname fname)
                    (if (.isDirectory (file out-name))
