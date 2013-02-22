@@ -1,5 +1,7 @@
 (defproject clj-genomespace "0.1.3"
   :description "Access GenomeSpace data integration platform with simple Clojure API"
+  :license {:name "MIT Licence"
+            :url "http://www.opensource.org/licenses/mit-license.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
                  [org.clojars.chapmanb/genomespace-cdk "0.1-SNAPSHOT"]
                  [com.sun.jersey.contribs/jersey-apache-client "1.11"
