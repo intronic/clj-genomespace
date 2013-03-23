@@ -1,5 +1,6 @@
-(defproject clj-genomespace "0.1.3"
-  :description "Access GenomeSpace data integration platform with simple Clojure API"
+(defproject org.clojars.intronic/clj-genomespace "0.1.4-SNAPSHOT"
+  :description "Access GenomeSpace data integration platform with simple Clojure API. (Forked from https://github.com/chapmanb/clj-genomespace)"
+  :url "https://github.com/intronic/clj-genomespace"
   :license {:name "MIT Licence"
             :url "http://www.opensource.org/licenses/mit-license.html"}
   :dependencies [[org.clojure/clojure "1.4.0"]
