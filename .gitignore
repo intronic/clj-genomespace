@@ -4,7 +4,7 @@
 /lib/
 /classes/
 /checkouts/
-pom.xml
+/pom.xml
 pom.xml.asc
 *.jar
 *.class
@@ -12,3 +12,4 @@ pom.xml.asc
 .lein-failures
 .lein-plugins
 .lein-repl-history
+gstest.vcf
